@@ -4,9 +4,9 @@ import math
 g_arrBandwidth = [1.4e6, 2.4e6, 5e6, 1e7, 1.5e7, 2e7]
 g_arrPrbCount = [6, 15, 25, 50, 75, 100]
 g_arrRbgSize = [1, 2, 2, 3, 4, 4]  # 根据带宽不同，一个rbg对应的prb数不同
-g_arrNofRbg = [6, 92, 12, 16, 18, 25]
+g_arrNofRbg = [6, 12, 12, 16, 18, 25]
 
-g_bwConfig = 2
+g_bwConfig = 1
 g_nofPrb = g_arrPrbCount[g_bwConfig]
 g_nRbgSize = g_arrRbgSize[g_bwConfig]  # 获取rbgsize，即一个rbg包含多少个prb
 g_nofRbg = g_arrNofRbg[g_bwConfig]  # rbg数量
@@ -1020,16 +1020,16 @@ def GetMcsFromCqi(cqi):
 def get_tb(cqi, a):#a代表资源块的个数
     # if a == 0:
     #     return 0
-    tb=0
-    if isinstance(cqi,list):
+    tb = 0
+    if isinstance(cqi, list):
         for i in range(len(cqi)):
             mcs = GetMcsFromCqi(cqi[i])
             # nrb = a  # 占了多少个rbg组
             tb += GetDlTbSizeFromMcs(mcs, g_nRbgSize)
     else:
         mcs = GetMcsFromCqi(cqi)
-        tb = GetDlTbSizeFromMcs(mcs, g_nRbgSize *a)
-    return tb#返回的是一个rbg携带的bit
+        tb = GetDlTbSizeFromMcs(mcs, g_nRbgSize * a)
+    return tb  # 返回的是一个rbg携带的bit
 
 
 #

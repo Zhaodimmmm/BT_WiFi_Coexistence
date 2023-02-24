@@ -258,13 +258,13 @@ def ppo(env_fn, actor_critic=core.RA_ActorCritic, ac_kwargs=dict(), seed=0,
             if pi_l_old is None:
                 pi_l_old, pi_info_old = loss_pi.item(), pi_info
             # print('loss_pi', loss_pi)
-            loss_pi.backward()
-            mpi_avg_grads(ac.pi)  # average grads across MPI processes
-            pi_optimizer.step()
             kl = mpi_avg(pi_info['kl'])
             if kl > 1.5 * target_kl:
                 logger.log('Early stopping at step %d due to reaching max kl.' % i)
                 break
+            loss_pi.backward()
+            mpi_avg_grads(ac.pi)  # average grads across MPI processes
+            pi_optimizer.step()
         # logger.store(StopIter=i)
         # Log changes from update
         ac.eval()
@@ -400,7 +400,7 @@ def ppo(env_fn, actor_critic=core.RA_ActorCritic, ac_kwargs=dict(), seed=0,
         ax.cla()  # clear plot
         ax.plot(x, y, 'r', lw=1)  # draw line chart
         plt.pause(0.1)
-        plt.savefig('./rewards_12channel_36user_rep1.jpg')
+        plt.savefig('./rewards_12channel_36user_2.4G_rep1.jpg')
         end1_time = time.time()
         print("epoch_time", end1_time-start1_time)
         update()
@@ -457,7 +457,7 @@ if __name__ == '__main__':
     import os
 
     trace_dir = os.getcwd() + "/result"
-    logger_kwargs = setup_logger_kwargs("ppo-ra-12-36-rep1", data_dir=trace_dir, datestamp=True)
+    logger_kwargs = setup_logger_kwargs("ppo-ra-12-36-2.4G-rep1", data_dir=trace_dir, datestamp=True)
     ppo(env_run,
         actor_critic=core.RA_ActorCritic, ac_kwargs={"hidden_sizes": (256, 512, 1024, 512, 256)},
         steps_per_epoch=100, epochs=1000, gamma=0.99, clip_ratio=0.2, pi_lr=3e-4,

@@ -28,7 +28,7 @@ class Env:
     def __init__(self):
         self.enb_list = [[0, 0, 0]]
         self.enb_cnt = len(self.enb_list)
-        self.enb_radius = 100   # 区域的半径
+        self.enb_radius = 50   # 区域的半径
         self.user_perenb = 36
         self.user_number = self.user_perenb * self.enb_cnt
         self.userlist = 0

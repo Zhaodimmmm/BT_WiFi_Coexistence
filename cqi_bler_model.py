@@ -367,7 +367,7 @@ class U2Schannels:
                     max = each
             res[j] = max
             j += 1
-        return res,bler,sinr
+        return res, bler, sinr
 
 
 def calculate_cqi_bler(distance, act):
@@ -375,7 +375,7 @@ def calculate_cqi_bler(distance, act):
     if len(act) == 0:
         return np.zeros(0), np.zeros(0), np.zeros(0),np.zeros((1, g_nofRbg)),np.zeros(0),np.zeros(0),np.zeros((1, g_nofRbg))
     env = U2Schannels(g_nofRbg, g_nRbgSize, 30)
-    env.get_frequency(5.15e9)
+    env.get_frequency(2.4e9)
     env.get_gain(0, 0)
     path = env.update_pathloss(distance)
     env.Compute_Noise()

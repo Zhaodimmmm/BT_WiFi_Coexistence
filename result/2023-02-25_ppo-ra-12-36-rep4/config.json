@@ -1,0 +1,47 @@
+{
+    "ac_kwargs":	{
+        "hidden_sizes":	[
+            256,
+            512,
+            1024,
+            512,
+            256
+        ]
+    },
+    "actor_critic":	"RA_ActorCritic",
+    "clip_ratio":	0.2,
+    "env_fn":	"env_run",
+    "epochs":	1000,
+    "exp_name":	"ppo-ra-12-36-2.4G-25m-rep5",
+    "gamma":	0.99,
+    "lam":	0.97,
+    "logger":	{
+        "<spinup.utils.logx.EpochLogger object at 0x7f88dacd7710>":	{
+            "epoch_dict":	{},
+            "exp_name":	"ppo-ra-12-36-2.4G-25m-rep5",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/home/flyvideo/Sata/ZD/BT_WiFi_Coexistence-master/result/2023-02-25_ppo-ra-12-36-2.4G-25m-rep5",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/home/flyvideo/Sata/ZD/BT_WiFi_Coexistence-master/result/2023-02-25_ppo-ra-12-36-2.4G-25m-rep5/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"ppo-ra-12-36-2.4G-25m-rep5",
+        "output_dir":	"/home/flyvideo/Sata/ZD/BT_WiFi_Coexistence-master/result/2023-02-25_ppo-ra-12-36-2.4G-25m-rep5"
+    },
+    "max_ep_len":	50,
+    "pi_lr":	0.0003,
+    "save_freq":	10,
+    "seed":	0,
+    "steps_per_epoch":	100,
+    "target_kl":	0.01,
+    "train_pi_iters":	80,
+    "train_v_iters":	80,
+    "use_cuda":	true,
+    "vf_lr":	0.0001
+}

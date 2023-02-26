@@ -1,0 +1,8 @@
+radius = 50m
+max_episode_len = 50
+steps_per_epoch = 100
+update iteration = 80
+frequency = 2.4GHz
+bandwidth = 3MHz
+users = 36
+resources = 12
